@@ -3,6 +3,7 @@ import * as THREE from "three";
 import React, { memo, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Stats from "stats.js";
+import { useAnimationFrame } from "./hooks";
 import { ANCHORS, ANCHOR_SYNONYMS } from "./constants";
 
 /**
@@ -98,31 +99,6 @@ export function areArraysEqual(array1, array2): boolean {
     array1[2] === array2[2]
   );
 }
-
-/**
- * useAnimationFrame
- */
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export const useAnimationFrame = (callback, dependencies?: any[]): void => {
-  // Use useRef for mutable variables that we want to persist
-  // without triggering a re-render on their change
-  const requestRef = useRef<number>();
-
-  function animate(): void {
-    callback();
-    requestRef.current = requestAnimationFrame(animate);
-  }
-
-  useEffect(() => {
-    requestRef.current = requestAnimationFrame(animate);
-    return (): void => {
-      if (requestRef.current != null) {
-        cancelAnimationFrame(requestRef.current);
-      }
-    };
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  }, dependencies); // Make sure the effect runs only once
-};
 
 /**
  * FPS
