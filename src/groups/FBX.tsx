@@ -1,5 +1,5 @@
 // FBX.tsx
-import * as React, { useEffect, useMemo, useRef, memo } from "react";
+import React, { useEffect, useMemo, useRef, memo } from "react";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import PropTypes from "prop-types";
