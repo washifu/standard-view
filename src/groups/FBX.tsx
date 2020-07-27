@@ -1,5 +1,5 @@
 // FBX.tsx
-import React, { useEffect, useMemo, useRef, memo } from "react";
+import * as React from "react";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import PropTypes from "prop-types";
@@ -8,6 +8,7 @@ import { useViewContext, useAnimationFrame } from "../utils/hooks";
 import Group, { GroupProps, GroupPropTypes } from "./Group";
 import { Label } from "../primitives";
 
+const { useEffect, useMemo, useRef, memo } = React;
 
 interface FBXProps extends GroupProps {
   fbxPath?: string;
