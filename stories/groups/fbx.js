@@ -55,7 +55,7 @@ export default function FBXStory(): React.Node {
         scale={numberArray("scale", [1, 1, 1], 3, KNOB_GROUP.GEOMETRY)}
         rotation={numberArray(
           "rotation",
-          [-Math.PI / 2, 0, 0],
+          [fbxURL == models.sophia ? -Math.PI / 2 : 0, 0, 0],
           3,
           KNOB_GROUP.GEOMETRY
         )}
@@ -64,7 +64,6 @@ export default function FBXStory(): React.Node {
         fbxURL={fbxURL}
         fbxPath={text("fbxPath", "fbx/", KNOB_GROUP.MATERIAL)}
         actionIndex={number("actionIndex", 0, {}, KNOB_GROUP.MATERIAL)}
-        materialType={text("materialType", "lambert", KNOB_GROUP.MATERIAL)}
         visible={boolean("visible", true, KNOB_GROUP.MATERIAL)}
       />
     </View3D>
