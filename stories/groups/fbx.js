@@ -63,6 +63,7 @@ export default function FBXStory(): React.Node {
         roll={number("roll", 0, {}, KNOB_GROUP.GEOMETRY)}
         fbxURL={fbxURL}
         fbxPath={text("fbxPath", "fbx/", KNOB_GROUP.MATERIAL)}
+        actionIndex={number("actionIndex", 0, {}, KNOB_GROUP.MATERIAL)}
         materialType={text("materialType", "lambert", KNOB_GROUP.MATERIAL)}
         visible={boolean("visible", true, KNOB_GROUP.MATERIAL)}
       />

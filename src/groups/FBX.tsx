@@ -4,13 +4,14 @@ import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import PropTypes from "prop-types";
 import exact from "prop-types-exact";
-import { useViewContext, useAnimationFrame } from "../utils/hooks";
+import { useViewContext, useFrame } from "../utils/hooks";
 import Group, { GroupProps, GroupPropTypes } from "./Group";
 import { Label } from "../primitives";
 
 interface FBXProps extends GroupProps {
   fbxPath?: string;
   fbxURL: string;
+  actionIndex?: number;
 }
 
 function updateAllMaterials(
@@ -134,6 +135,7 @@ function loadFBX({
 const FBX: React.FunctionComponent<FBXProps> = function FBX({
   fbxPath = "",
   fbxURL,
+  actionIndex = 0,
   view3DEnvMap = false,
   castShadow = false,
   receiveShadow = false,
@@ -209,16 +211,26 @@ const FBX: React.FunctionComponent<FBXProps> = function FBX({
           envMap: _envMap,
           castShadow,
           receiveShadow,
-          materialProps
+          materialProps,
+          actionIndex
         });
       }
     },
-    [group, fbxPath, fbxURL, _envMap, castShadow, receiveShadow, materialProps]
+    [
+      group,
+      fbxPath,
+      fbxURL,
+      actionIndex,
+      _envMap,
+      castShadow,
+      receiveShadow,
+      materialProps
+    ]
   );
 
   // Animation Mixer Update
   const clock = new THREE.Clock();
-  useAnimationFrame(function updateMixer() {
+  useFrame(function updateMixer() {
     const delta = clock.getDelta();
     if (mixer.current) {
       mixer.current.update(delta);

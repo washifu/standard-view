@@ -7,6 +7,7 @@
 - 🎉 Added `FBX` which accepts the following props
   - `fbxPath`: string
   - `fbxURL`: string
+  - `actionIndex`: number
   - all `Group` props
 - 📖 Added `FBX` Story
 
