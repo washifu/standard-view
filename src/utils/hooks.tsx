@@ -76,7 +76,7 @@ export const useAnimationFrame = (callback, dependencies?: any[]): void => {
   }
 
   useEffect(() => {
-    requestRef.current = requestAnimationFrame(animate);
+    animate();
     return (): void => {
       if (requestRef.current != null) {
         cancelAnimationFrame(requestRef.current);
